@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
       <img className="Background" src="img/Home.jpg" />
       <div className="TopBar">
         <h1 className="Title">Minap</h1>
