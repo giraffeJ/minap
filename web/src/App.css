@@ -19,7 +19,7 @@
 .TopBar{
   display: flex;
   margin: 0px;
-  height: 150px;
+  height: 40px;
   width: 100%;
   background-color: #deceb0;
 }
@@ -28,18 +28,17 @@
   display: flex;
   width: fit-content;
   text-align: left;
-  font-size: 80px;
+  font-size: 24px;
   font-family: "Anders";
-  
-  margin: auto 0 auto 40px;
+  margin: auto 0 auto 12px;
 }
 
 .AddButton{
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 24px;
+  height: 24px;
   right: 0px;
-  margin: auto 30px auto auto;
+  margin: auto 12px auto auto;
 }
 
 .App-logo {
