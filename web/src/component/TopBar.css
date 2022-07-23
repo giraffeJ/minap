@@ -1,0 +1,13 @@
+.TopBar{
+  margin: 0px;
+  height: 7vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.Title{
+  margin: 0;
+  padding: 1vh 0;
+  font-size: 4vh;
+  font-family: "Anders";
+}
