@@ -15,10 +15,7 @@ function App() {
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
       <TopBar />
       {pageNum==0 && <Home />}
-      {pageNum>=1 && <TodoPage pageNum={pageNum} />}
-      {pageNum>=2 && <TodoPage pageNum={pageNum} />}
-      {pageNum>=3 && <TodoPage pageNum={pageNum} />}
-      {pageNum>=4 && <TodoPage pageNum={pageNum} />}
+      {pageNum>0 && <TodoPage pageNum={pageNum} />}
       <BottomNav setPageNum={setPageNum}/>
     </div>
   );

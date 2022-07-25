@@ -1,4 +1,6 @@
+import { GetInitialTodo } from './GetInitialTodo';
 import './RestartModal.css';
+
 type Props = {
   setGoal: Function,
   setTodoList: Function,
@@ -7,7 +9,7 @@ type Props = {
 
 async function Restart (setGoal: Function, goal: string, setTodoList: Function, startDate: string, setVisible: Function){
   setGoal(goal);
-  //setTodoList(getInitialTodo(startDate))
+  setTodoList(GetInitialTodo({startDate}))
 }
 
 export const RestartModal = ({setGoal, setTodoList, setVisible}: Props) => {
