@@ -8,10 +8,10 @@ export const BottomNav = ({setPageNum}: Props) => {
   return (
     <div className="BottomNav">
       <button className="NavButton" onClick={() => setPageNum(1)}>
-        <img className="NavButtonImg" src="img/water.png" />
+        <img className="NavButtonImg" src="img/diary.png" />
       </button>
       <button className="NavButton" onClick={() => setPageNum(2)}>
-        <img className="NavButtonImg" src="img/run.png" />
+        <img className="NavButtonImg" src="img/water.png" />
       </button>
       <button className="NavButton" onClick={() => setPageNum(0)}>
         <img className="NavButtonImg" src="img/home.png" />
