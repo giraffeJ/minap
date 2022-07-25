@@ -1,7 +1,7 @@
 import "./Home.css"
 
 export const Home = () => {
-  var DDay = Math.round((new Date().getTime() - new Date(2012, 12, 14).getTime()) / 86400000);
+  var DDay = Math.floor((new Date().getTime() - new Date(2012, 12, 14).getTime()) / 86400000);
   return (
     <div className="Home">
       <div className="DDay">
