@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Todo } from '../d';
 import { loadTodoList, saveTodoList } from './LocalStorage';
 import { RestartModal } from './RestartModal';
 import { TodoList } from './TodoList';
@@ -8,14 +9,7 @@ type Props = {
   pageNum: number;
 }
 
-type TodoList = 
-  [{
-    date: string,
-    done: boolean,
-    strikes: number
-  }];
-
-function CalcRate(todoList: TodoList){
+function CalcRate(todoList: Todo[]){
   return "0% (0/0)";
 }
 
@@ -28,6 +22,9 @@ export const TodoPage = ({pageNum}: Props) => {
     saveTodoList(pageNum, todoList);
     rate = CalcRate(todoList);
   }, [todoList]);
+  useEffect(() => {
+    setTodoList(loadTodoList(pageNum));
+  }, [pageNum]);
   var startDate = new Date(2022, 7, 3);
   return (
     <div className="TodoPage">

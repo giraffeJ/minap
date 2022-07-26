@@ -1,14 +1,10 @@
-type TodoList = 
-  [{
-    date: string,
-    done: boolean,
-    strikes: number
-  }];
+import { Todo } from "../d";
 
 type Props = {
-  todoList: TodoList
+  todoList: Todo[]
 }
 export const TodoList = ({todoList: todoList}: Props) => {
+  console.log(todoList);
   const list = todoList.map(({date, done, strikes}) => 
     <ul className="listul">
       <li className="listDate">{date}</li>

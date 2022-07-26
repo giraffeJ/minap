@@ -1,15 +1,11 @@
-type TodoList = 
-  [{
-    date: string,
-    done: boolean,
-    strikes: number
-  }];
-export const saveTodoList = (pageNum: number, todoList: TodoList) => {
+import { Todo } from "../d";
+
+export const saveTodoList = (pageNum: number, todoList: Todo[]) => {
   let key = "todo" + pageNum.toString();
   localStorage.setItem(key, JSON.stringify(todoList));
 }
 
-export function loadTodoList(pageNum: number): TodoList {
+export function loadTodoList(pageNum: number): Todo[] {
   let key = "todo" + pageNum.toString();
   return JSON.parse(localStorage.getItem(key) || "[]");
 }

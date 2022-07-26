@@ -1,17 +1,27 @@
+import { Todo } from "../d";
+
 type Props = {
   startDate: string
 }
 
-type TodoList = 
-  [{
-    date: string,
-    done: boolean,
-    strikes: number
-  }];
+function stringToDate(startDate: string){
+  let year = parseInt(startDate.substring(0, 4));
+  let month = parseInt(startDate.substring(4, 6)) - 1;
+  let day = parseInt(startDate.substring(6, 8));
+  return new Date(year, month, day);
+}
 
 export const GetInitialTodo = ({startDate}: Props) => {
-  let todo: TodoList;  
+  const startDay = stringToDate(startDate);
   const today = new Date();
-  const startDay = new Date();
-  return ;
+  let todoList: Todo[] = [];
+  for(let day=startDay; day<=today; day.setDate(day.getDate() + 1)){
+    let todo: Todo = {
+      date: day.toISOString().substring(0, 10),
+      done: false,
+      strikes: 0
+    }
+    todoList.push(todo);
+  }
+  return todoList;
 }
