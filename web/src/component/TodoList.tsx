@@ -29,8 +29,6 @@ function UpdateTodoList(date: string, todoList: Todo[], setTodoList: Function){
 }
 
 export const TodoList = ({todoList: todoList, setTodoList: setTodoList}: Props) => {
-  console.log("TodoList Component");
-  console.log(todoList);
   return (
     <div className="TodoList">
       {

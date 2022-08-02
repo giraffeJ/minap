@@ -19,7 +19,6 @@ async function Restart (setGoal: Function, goal: string, setTodoList: Function, 
     setAlertDate(true);
     return;
   }
-  console.log(goal);
   if(goal==""){
     setAlertGoal(true);
     return;

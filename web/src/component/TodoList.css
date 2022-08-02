@@ -1,10 +1,10 @@
 .unchecked{
   width: 100%;
-  background: black;
+  background: white;
   height: 69px;
   display: block;
   border-bottom: 1px solid #2C3E50;
-  color: #fff;
+  color: black;
   text-transform: capitalize;
   letter-spacing: 1px;
   cursor: pointer;
