@@ -1,0 +1,50 @@
+.unchecked{
+  width: 100%;
+  background: black;
+  height: 69px;
+  display: block;
+  border-bottom: 1px solid #2C3E50;
+  color: #fff;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.7s ease;
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.checked{
+  width: 100%;
+  background: #ae5f75;
+  height: 69px;
+  display: block;
+  border-bottom: 1px solid #2C3E50;
+  color: #fff;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.7s ease;
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.listDate{
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 5px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.listStrikes{
+  display: inline-block;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 700;
+  margin: auto;
+}

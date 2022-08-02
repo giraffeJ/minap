@@ -14,9 +14,14 @@ function checkValidDate(date: string){
   return validDateForm.test(date);
 }
 
-async function Restart (setGoal: Function, goal: string, setTodoList: Function, startDate: string, setVisible: Function, setAlertVisiblity: Function){
+async function Restart (setGoal: Function, goal: string, setTodoList: Function, startDate: string, setVisible: Function, setAlertDate: Function, setAlertGoal: Function){
   if(!checkValidDate(startDate)){
-    setAlertVisiblity(true);
+    setAlertDate(true);
+    return;
+  }
+  console.log(goal);
+  if(goal==""){
+    setAlertGoal(true);
     return;
   }
   setGoal(goal);
@@ -27,7 +32,8 @@ async function Restart (setGoal: Function, goal: string, setTodoList: Function, 
 export const RestartModal = ({setGoal, setTodoList, setVisible}: Props) => {
   const [goalInput, setGoalInput] = useState("");
   const [startDate, setStartDate] = useState("");
-  const [alertVisiblity, setAlertVisiblity] = useState(false); 
+  const [alertGoal, setAlertGoal] = useState(false); 
+  const [alertDate, setAlertDate] = useState(false); 
   return(
     <div className="RestartModalBackground">
       <div className="RestartModal">
@@ -39,10 +45,11 @@ export const RestartModal = ({setGoal, setTodoList, setVisible}: Props) => {
         <input className="StartDate" 
                placeholder="ex)20220701"
                onChange={(event) => setStartDate(event.target.value)} />
-        <button className="RestartOk" onClick={() => Restart(setGoal, goalInput, setTodoList, startDate, setVisible, setAlertVisiblity)}>시작</button>
+        <button className="RestartOk" onClick={() => Restart(setGoal, goalInput, setTodoList, startDate, setVisible, setAlertDate, setAlertGoal)}>시작</button>
         <button className="RestartCancel" onClick={() => setVisible(0)}>취소</button>
       </div>
-      {alertVisiblity && <Alert severity='error'>날짜 입력 형식이 잘못되었습니다. ex.20210301</Alert>}
+      {alertGoal && <Alert severity='error'>목표를 입력해주세요</Alert>}
+      {alertDate && <Alert severity='error'>날짜 입력 형식이 잘못되었습니다. ex.20210301</Alert>}
     </div>
   );
 }

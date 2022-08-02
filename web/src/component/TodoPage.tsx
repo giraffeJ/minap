@@ -13,6 +13,10 @@ function CalcRate(todoList: Todo[]){
   return "0% (0/0)";
 }
 
+function GetDateForm(date: Date){
+  return date.toISOString().substring(0, 10);
+}
+
 export const TodoPage = ({pageNum}: Props) => {
   const [todoList, setTodoList] = useState(loadTodoList(pageNum));
   const [goal, setGoal] = useState("목표가 없습니다.");
@@ -41,7 +45,7 @@ export const TodoPage = ({pageNum}: Props) => {
           <button className="RestartButton" onClick={() => setRestartModalVisibility(1)}>초기화</button>
         </div>
       </div>
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} setTodoList={setTodoList} />
       {restartModalVisibility==1 && <RestartModal setGoal={setGoal} 
                                                   setTodoList={setTodoList} 
                                                   setVisible={setRestartModalVisibility} />}

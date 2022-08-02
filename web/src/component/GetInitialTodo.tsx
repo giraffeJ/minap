@@ -13,9 +13,11 @@ function stringToDate(startDate: string){
 
 export const GetInitialTodo = ({startDate}: Props) => {
   const startDay = stringToDate(startDate);
+  console.log(startDay);
   const today = new Date();
   let todoList: Todo[] = [];
   for(let day=startDay; day<=today; day.setDate(day.getDate() + 1)){
+    console.log(day);
     let todo: Todo = {
       date: day.toISOString().substring(0, 10),
       done: false,
