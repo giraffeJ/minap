@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -32,11 +33,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: WebView(
           initialUrl: "https://minap.netlify.app",
           javascriptMode: JavascriptMode.unrestricted,
+          javascriptChannels: {
+            JavascriptChannel(
+                name: 'messageHandler',
+                onMessageReceived: (JavascriptMessage message) {
+                  if (message.message == 'vibrate') {
+                    HapticFeedback.mediumImpact();
+                  }
+                }),
+          }.toSet(),
         ),
       ),
     );
