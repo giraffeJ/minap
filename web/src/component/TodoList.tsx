@@ -30,6 +30,14 @@ export const TodoList = ({
     buttonClickAudio.currentTime = 0;
     buttonClickAudio.play();
   };
+  const vibrate = () => {
+    if ((window as any).messageHandler) {
+      (window as any).messageHandler.postMessage("vibrate");
+    } else {
+      // messageHandler가 정의되지 않은 경우, 예를 들어 navigator.vibrate를 사용해 볼 수 있습니다.
+      navigator.vibrate(200);
+    }
+  };
   const UpdateTodoList = (
     date: string,
     todoList: Todo[],
