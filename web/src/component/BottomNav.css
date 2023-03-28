@@ -1,19 +1,26 @@
-.BottomNav{
+.BottomNav {
   width: 100%;
   height: 6vh;
-  position: absolute; 
+  position: absolute;
   bottom: 0px;
   border-top: grey 1px;
 }
 
-.NavButton{
+.NavButton {
   width: 20%;
   height: 100%;
   background-color: white;
   border: 0;
 }
 
-.NavButtonImg{
+.NavButton-on {
+  width: 20%;
+  height: 100%;
+  background-color: #f4efe4;
+  border: 0;
+}
+
+.NavButtonImg {
   width: 30px;
   height: 30px;
   margin: auto;

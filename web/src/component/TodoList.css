@@ -1,5 +1,6 @@
 .TodoList {
-  overflow: auto;
+  overflow-y: scroll;
+  height: 79vh;
 }
 .unchecked {
   width: 100%;
