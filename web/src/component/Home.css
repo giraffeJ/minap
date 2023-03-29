@@ -1,8 +1,9 @@
-.Home{
+.Home {
+  position: absolute;
   width: 100%;
   height: 87vh;
 }
-.Background{
+.Background {
   padding-top: 20px;
   display: block;
   width: 300px;
@@ -10,20 +11,20 @@
   margin: auto;
 }
 
-.DDay{
+.DDay {
   display: flex;
   height: 2vh;
   margin-top: 5px;
   justify-content: center;
 }
 
-.DDayImg{
+.DDayImg {
   display: flex;
   width: 2vh;
   height: 2vh;
 }
 
-.DDayText{
+.DDayText {
   display: flex;
   font-size: 2vh;
   margin: 0;
