@@ -25,6 +25,7 @@ export const TodoList = ({
   todoList: todoList,
   setTodoList: setTodoList,
 }: Props) => {
+  console.log("TodoList");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   function handleScroll() {
@@ -60,53 +61,8 @@ export const TodoList = ({
     justifyContent: "center",
   };
 
-  const thumbStyle: React.CSSProperties = {
-    backgroundColor: "gray",
-    borderRadius: "8px",
-    height: "50px",
-    width: "100%",
-    transform: `translateY(${scrollPosition}px)`,
-  };
-
   const thumbRef = useRef<HTMLDivElement>(null);
 
-  function handleThumbMouseDown(e: React.MouseEvent<HTMLDivElement>) {
-    e.preventDefault();
-    if (!scrollRef.current || !thumbRef.current) return;
-
-    const scrollable: any = scrollRef.current;
-    const initialMouseY = e.clientY;
-    const initialThumbY = parseFloat(
-      thumbRef.current.style.transform.slice(11)
-    );
-
-    function handleMouseMove(e: MouseEvent) {
-      const { top: contentTop } = scrollable.getBoundingClientRect();
-      if (thumbRef.current) {
-        const deltaY = e.clientY - initialMouseY;
-        const y = initialThumbY + deltaY;
-        const maxThumbPosition =
-          scrollable.clientHeight - thumbRef.current.clientHeight;
-
-        // Thumb의 위치를 scrollable 요소의 범위 내에서만 유지합니다.
-        const clampedY = Math.min(Math.max(y, 0), maxThumbPosition);
-        const scrollY =
-          (clampedY * (scrollable.scrollHeight - scrollable.clientHeight)) /
-          (scrollable.clientHeight - thumbRef.current.clientHeight);
-
-        thumbRef.current.style.transform = `translateY(${clampedY}px)`;
-        scrollable.scrollTop = scrollY;
-      }
-    }
-
-    function handleMouseUp() {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    }
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-  }
   function handleScrollbarClick(e: React.MouseEvent<HTMLDivElement>) {
     if (!scrollRef.current || !thumbRef.current) return;
     const scrollable: any = scrollRef.current;
@@ -165,13 +121,7 @@ export const TodoList = ({
           <span className="listStrikes">{strikes}일 연속 성공!</span>
         </button>
       ))}
-      <div style={scrollbarStyle} onClick={handleScrollbarClick}>
-        <div
-          ref={thumbRef}
-          style={thumbStyle}
-          onMouseDown={handleThumbMouseDown}
-        />
-      </div>
+      <div style={scrollbarStyle} onClick={handleScrollbarClick}></div>
     </div>
   );
 };
