@@ -1,9 +1,12 @@
-.unchecked{
+.TodoList {
+  overflow: auto;
+}
+.unchecked {
   width: 100%;
   background: white;
   height: 69px;
   display: block;
-  border-bottom: 1px solid #2C3E50;
+  border-bottom: 1px solid #2c3e50;
   color: black;
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -15,12 +18,12 @@
   -webkit-box-sizing: border-box;
 }
 
-.checked{
+.checked {
   width: 100%;
   background: #ae5f75;
   height: 69px;
   display: block;
-  border-bottom: 1px solid #2C3E50;
+  border-bottom: 1px solid #2c3e50;
   color: #fff;
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -32,7 +35,7 @@
   -webkit-box-sizing: border-box;
 }
 
-.listDate{
+.listDate {
   display: inline-block;
   margin: auto;
   margin-bottom: 5px;
@@ -41,7 +44,7 @@
   font-weight: 900;
 }
 
-.listStrikes{
+.listStrikes {
   display: inline-block;
   width: 100%;
   font-size: 13px;
