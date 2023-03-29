@@ -8,11 +8,12 @@ type Props = {
 };
 
 function CalcStrikes(todoList: Todo[]) {
-  if (todoList[0].done) todoList[0].strikes = 1;
-  else todoList[0].strikes = 0;
-  for (let i = 1; i < todoList.length; i++) {
+  if (todoList[todoList.length - 1].done)
+    todoList[todoList.length - 1].strikes = 1;
+  else todoList[todoList.length - 1].strikes = 0;
+  for (let i = todoList.length - 2; i >= 0; i--) {
     if (todoList[i].done) {
-      todoList[i].strikes = todoList[i - 1].strikes + 1;
+      todoList[i].strikes = todoList[i + 1].strikes + 1;
     } else {
       todoList[i].strikes = 0;
     }
@@ -35,7 +36,7 @@ export const TodoList = ({
     setTodoList: Function
   ) => {
     playSound();
-    navigator.vibrate(200);
+    window.navigator.vibrate(200);
     let foundIndex = todoList.findIndex((x) => x.date == date);
     let tmpTodo = [...todoList];
     tmpTodo[foundIndex].done = !tmpTodo[foundIndex].done;
