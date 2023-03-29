@@ -23,7 +23,7 @@ function CalcRate(todoList: Todo[]) {
 
 function AddNewTodo(todoList: Todo[], setTodoList: Function) {
   let tmpTodo: Todo[] = [...todoList];
-  let day: Date = StringToDate(tmpTodo[tmpTodo.length - 1].date);
+  let day: Date = StringToDate(tmpTodo[0].date);
   day.setDate(day.getDate() + 1);
   for (day; day <= new Date(); day.setDate(day.getDate() + 1)) {
     let todo: Todo = {
@@ -42,18 +42,26 @@ export const TodoPage = ({ pageNum }: Props) => {
   const [restartModalVisibility, setRestartModalVisibility] = useState(0);
   const [rate, setRate] = useState(CalcRate(todoList));
   useEffect(() => {
+    console.log("goalEffect");
     SaveGoal(pageNum, goal);
   }, [goal]);
   useEffect(() => {
+    console.log("todoListEffect");
     SaveTodoList(pageNum, todoList);
     setRate(CalcRate(todoList));
   }, [todoList]);
   useEffect(() => {
+    console.log("pageNumEffect");
+    let todo: Todo[] = [];
+    setTodoList(todo);
+    console.log(todoList);
     setTodoList(LoadTodoList(pageNum));
+    console.log(todoList);
     if (
       todoList.length > 0 &&
       todoList[todoList.length - 1].date != DateToString(new Date())
     ) {
+      console.log("AddNewTodo");
       AddNewTodo(todoList, setTodoList);
     }
     setGoal(LoadGoal(pageNum));
