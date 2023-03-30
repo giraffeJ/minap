@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { Todo } from "../d";
 import { LoadTodoList, SaveTodoList, LoadGoal, SaveGoal } from "./LocalStorage";
 import { RestartModal } from "./RestartModal";
@@ -33,16 +33,19 @@ function AddNewTodo(todoList: Todo[], setTodoList: Function) {
     };
     tmpTodo.unshift(todo);
   }
-  setTodoList(tmpTodo);
+  return tmpTodo;
 }
 
 export const TodoPage = ({ pageNum }: Props) => {
-  const [todoList, setTodoList] = useState(LoadTodoList(pageNum));
+  console.log("TodoPage" + pageNum);
+  const [visibility, setVisibility] =
+    useState<DocumentVisibilityState>("hidden");
+  const [todoList, setTodoList] = useState<Todo[]>([]);
   const [goal, setGoal] = useState("목표가 없습니다.");
   const [restartModalVisibility, setRestartModalVisibility] = useState(0);
   const [rate, setRate] = useState(CalcRate(todoList));
   useEffect(() => {
-    console.log("goalEffect");
+    console.log("GoalEffect");
     SaveGoal(pageNum, goal);
   }, [goal]);
   useEffect(() => {
@@ -52,26 +55,24 @@ export const TodoPage = ({ pageNum }: Props) => {
   }, [todoList]);
   useEffect(() => {
     console.log("pageNumEffect");
-    let todo: Todo[] = [];
-    setTodoList(todo);
-    console.log(todoList);
-    setTodoList(LoadTodoList(pageNum));
-    console.log(todoList);
+    let todo = LoadTodoList(pageNum);
     if (
-      todoList.length > 0 &&
-      todoList[todoList.length - 1].date != DateToString(new Date())
+      todo.length > 0 &&
+      todo[todo.length - 1].date != DateToString(new Date())
     ) {
-      console.log("AddNewTodo");
-      AddNewTodo(todoList, setTodoList);
+      todo = AddNewTodo(todo, setTodoList);
     }
+    if (pageNum > 0) setVisibility("visible");
+    else setVisibility("hidden");
+    setTodoList(todo);
     setGoal(LoadGoal(pageNum));
   }, [pageNum]);
   return (
-    <div className="TodoPage">
+    <div className="TodoPage" style={{ visibility: `${visibility}` }}>
       <div className="TitleBox">
         <div className="Goal">
           <div className="TitleText">
-            <p>목표</p>
+            `<p>목표</p>
           </div>
           <div className="TitleValue">
             <p>{goal}</p>
